@@ -4,22 +4,43 @@
 """
 from __future__ import annotations
 
-from typing import Any
+import copy
+from contextlib import contextmanager
+from typing import Any, Iterator
 
 from app.seed import SEED_ROWS
 
 
 class Store:
+    # 领域内部表：通过专门接口暴露，不进运营概览的分模块清单
+    INTERNAL_TABLES = {
+        "hydro_wells", "hydro_series", "hydro_reviews",
+        "hydro_deviations", "hydro_tasks",
+    }
+
     def __init__(self) -> None:
         self._tables: dict[str, list[dict[str, Any]]] = {
             name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
         }
 
     def module_names(self) -> list[str]:
-        return sorted(self._tables)
+        return sorted(name for name in self._tables if name not in self.INTERNAL_TABLES)
 
     def rows(self, module: str) -> list[dict[str, Any]]:
         return self._tables.setdefault(module, [])
+
+    @contextmanager
+    def transaction(self) -> Iterator[None]:
+        """领域动作的事务边界：区间内直接改内存表，任意异常都用快照整批回滚。
+
+        补测任务与偏离标记必须同生共死，靠这里保证「未成功时整批回滚」。
+        """
+        snapshot = copy.deepcopy(self._tables)
+        try:
+            yield
+        except Exception:
+            self._tables = snapshot
+            raise
 
     def find(self, module: str, entry_id: int) -> dict[str, Any] | None:
         for row in self.rows(module):
@@ -43,7 +64,15 @@ class Store:
             {"label": "待处理", "value": sum(int(item["pending"]) for item in modules)},
             {"label": "异常量", "value": sum(int(item["abnormal"]) for item in modules)},
         ]
-        return {"cards": cards, "modules": modules}
+        # 多孔水位对照台的偏离结论驱动概览看板重算，而不只是刷曲线。
+        # 汇总函数由服务层注册，避免 store -> services 的导入环。
+        extra_cards = self._compare_cards_provider() if self._compare_cards_provider else []
+        return {"cards": cards + extra_cards, "modules": modules}
+
+    def set_compare_cards_provider(self, provider: Any) -> None:
+        self._compare_cards_provider = provider
+
+    _compare_cards_provider: Any = None
 
 
 store = Store()

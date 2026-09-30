@@ -26,6 +26,15 @@ for module in ROUTERS:
     app.include_router(module.router)
 
 
+@app.on_event("startup")
+def bootstrap_hydro_compare() -> None:
+    """装载多孔水位对照台示例数据、首轮偏离重算并同步水文观测台账。"""
+    from app.services.hydro_compare import hydro_compare_service
+
+    hydro_compare_service.bootstrap()
+    store.set_compare_cards_provider(hydro_compare_service.compare_cards)
+
+
 @app.get("/api/health")
 def health() -> dict[str, object]:
     """健康检查：确认服务已经监听、示例数据已经就绪。"""

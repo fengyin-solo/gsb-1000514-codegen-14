@@ -14,6 +14,7 @@ const Reserve = () => import('@/views/reserve/index.vue')
 const SampleRegistry = () => import('@/views/sample_registry/index.vue')
 const Equipment = () => import('@/views/equipment/index.vue')
 const Hydro = () => import('@/views/hydro/index.vue')
+const HydroCompare = () => import('@/views/hydro_compare/index.vue')
 const Section = () => import('@/views/section/index.vue')
 const GeologicalReport = () => import('@/views/geological_report/index.vue')
 const Remote = () => import('@/views/remote/index.vue')
@@ -37,6 +38,7 @@ const router = createRouter({
     { path: '/sample_registry', name: 'sample_registry', component: SampleRegistry },
     { path: '/equipment', name: 'equipment', component: Equipment },
     { path: '/hydro', name: 'hydro', component: Hydro },
+    { path: '/hydro-compare', name: 'hydro_compare', component: HydroCompare },
     { path: '/section', name: 'section', component: Section },
     { path: '/geological_report', name: 'geological_report', component: GeologicalReport },
     { path: '/remote', name: 'remote', component: Remote },

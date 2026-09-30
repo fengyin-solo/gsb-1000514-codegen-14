@@ -28,6 +28,39 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class HydroObservationPayload(BaseModel):
+    """乱序回传的单条水位观测值。"""
+
+    观测编号: str
+    well_id: int | None = None
+    井号: str | None = None
+    观测时间: str
+    水位值: float
+
+
+class HydroIngestPayload(BaseModel):
+    """批量回传观测值：整批一个事务，按观测编号幂等。"""
+
+    observations: list[HydroObservationPayload]
+
+
+class HydroReviewPayload(BaseModel):
+    """人工复核记录：以复核记录为准，原始曲线不改写。"""
+
+    观测编号: str
+    复核值: float
+    复核人: str | None = None
+    复核时间: str | None = None
+
+
+class HydroRetestPayload(BaseModel):
+    """点选偏离段派发补测：任务与偏离标记同一事务落库。"""
+
+    偏离段id: list[int] = Field(default_factory=list)
+    指派人员: str | None = None
+    要求完成时间: str | None = None
+
+
 
 class BoreholeEntry(BaseModel):
     """钻孔明细结构。"""

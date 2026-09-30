@@ -32,10 +32,16 @@ def list_entries(
 
 @router.get("/{entry_id}", response_model=dict)
 def get_entry(entry_id: int) -> dict:
-    """读取单条钻孔明细；不存在时给出可读的错误说明。"""
+    """读取单条钻孔明细；不存在时给出可读的错误说明。
+
+    钻孔详情同步多孔水位对照结论（偏离天数、待补测、偏离段）。
+    """
     entry = service.get_entry(entry_id)
     if entry is None:
         raise HTTPException(status_code=404, detail=f"钻孔 {entry_id} 不存在或已归档")
+    from app.services.hydro_compare import hydro_compare_service
+
+    entry["水文对照"] = hydro_compare_service.borehole_summary(str(entry.get("钻孔编号")))
     return entry
 
 
