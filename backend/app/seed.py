@@ -437,41 +437,89 @@ SEED_ROWS: dict[str, list[dict[str, Any]]] = {
   '使用人员': '勘探设备样例3',
   '仪器状态': '勘探设备样例3'}],
     "hydro": [{'id': 1,
-  'status': '待观测',
-  'pending': True,
-  'abnormal': False,
-  '观测编号': 'HYDR-0001',
-  '观测类型': '水文地质样例1',
-  '所在钻孔': '水文地质样例1',
-  '静止水位': '水文地质样例1',
-  '降深': '水文地质样例1',
-  '出水量': '水文地质样例1',
-  '观测日期': '2026-09-01',
-  '观测状态': '水文地质样例1'},
- {'id': 2,
-  'status': '已观测',
+  'status': '数据异常',
   'pending': True,
   'abnormal': True,
-  '观测编号': 'HYDR-0002',
-  '观测类型': '水文地质样例2',
-  '所在钻孔': '水文地质样例2',
-  '静止水位': '水文地质样例2',
-  '降深': '水文地质样例2',
-  '出水量': '水文地质样例2',
-  '观测日期': '2026-09-02',
-  '观测状态': '水文地质样例2'},
- {'id': 3,
-  'status': '数据异常',
+  '观测编号': 'SW-BORE0001-JS',
+  '观测类型': '静止水位',
+  '所在钻孔': 'BORE-0001',
+  '静止水位': '12.50',
+  '降深': '—',
+  '出水量': '—',
+  '观测日期': '2026-09-29',
+  '观测状态': '偏离待补测',
+  '基准值': 12.5, '允许偏离': 0.3, '偏离天数': 4, '待补测数': 1,
+  '最新偏离段': '2026-09-22 ~ 2026-09-25'},
+ {'id': 2,
+  'status': '已复核',
   'pending': False,
   'abnormal': False,
-  '观测编号': 'HYDR-0003',
-  '观测类型': '水文地质样例3',
-  '所在钻孔': '水文地质样例3',
-  '静止水位': '水文地质样例3',
-  '降深': '水文地质样例3',
-  '出水量': '水文地质样例3',
-  '观测日期': '2026-09-03',
-  '观测状态': '水文地质样例3'}],
+  '观测编号': 'SW-BORE0001-YC',
+  '观测类型': '抽水井涌水量',
+  '所在钻孔': 'BORE-0001',
+  '静止水位': '—',
+  '降深': '—',
+  '出水量': '8.0',
+  '观测日期': '2026-09-29',
+  '观测状态': '已复核闭合',
+  '基准值': 8.0, '允许偏离': 1.0, '偏离天数': 0, '待补测数': 0,
+  '最新偏离段': '2026-09-10 ~ 2026-09-12（已闭合）'},
+ {'id': 3,
+  'status': '数据异常',
+  'pending': True,
+  'abnormal': True,
+  '观测编号': 'SW-BORE0002-JS',
+  '观测类型': '静止水位',
+  '所在钻孔': 'BORE-0002',
+  '静止水位': '6.40',
+  '降深': '—',
+  '出水量': '—',
+  '观测日期': '2026-09-29',
+  '观测状态': '偏离待补测',
+  '基准值': 6.4, '允许偏离': 0.5, '偏离天数': 4, '待补测数': 1,
+  '最新偏离段': '2026-08-20 ~ 2026-08-23'},
+ {'id': 4,
+  'status': '已复核',
+  'pending': False,
+  'abnormal': False,
+  '观测编号': 'SW-BORE0002-JL',
+  '观测类型': '降雨量',
+  '所在钻孔': 'BORE-0002',
+  '静止水位': '—',
+  '降深': '—',
+  '出水量': '—',
+  '观测日期': '2026-09-29',
+  '观测状态': '已复核闭合',
+  '基准值': 15.0, '允许偏离': 20.0, '偏离天数': 0, '待补测数': 0,
+  '最新偏离段': '2026-09-15 ~ 2026-09-16（已闭合）'},
+ {'id': 5,
+  'status': '数据异常',
+  'pending': True,
+  'abnormal': True,
+  '观测编号': 'SW-BORE0003-JS',
+  '观测类型': '静止水位',
+  '所在钻孔': 'BORE-0003',
+  '静止水位': '9.80',
+  '降深': '—',
+  '出水量': '—',
+  '观测日期': '2026-09-29',
+  '观测状态': '偏离待补测',
+  '基准值': 9.8, '允许偏离': 0.3, '偏离天数': 3, '待补测数': 1,
+  '最新偏离段': '2026-09-26 ~ 2026-09-28'},
+ {'id': 6,
+  'status': '已复核',
+  'pending': False,
+  'abnormal': False,
+  '观测编号': 'SW-BORE0003-WY',
+  '观测类型': '承压水压力',
+  '所在钻孔': 'BORE-0003',
+  '静止水位': '—',
+  '降深': '—',
+  '出水量': '—',
+  '观测日期': '2026-09-29',
+  '观测状态': '已复核闭合',
+  '基准值': 0.42, '允许偏离': 0.05, '偏离天数': 0, '待补测数': 0,
+  '最新偏离段': '2026-09-05 ~ 2026-09-06（已闭合）'}],
     "section": [{'id': 1,
   'status': '实测中',
   'pending': True,
@@ -653,3 +701,157 @@ SEED_ROWS: dict[str, list[dict[str, Any]]] = {
   '调查人员': '环境地质样例3',
   '调查状态': '环境地质样例3'}]
 }
+
+
+def _build_hydro_aux() -> dict[str, list[dict[str, Any]]]:
+    """构造对照台的时序点、复核、偏离段、补测任务种子。
+
+    序列按观测时间逐日生成；偏离用注入值覆盖正常波动值；
+    已闭合偏离段附人工复核记录（复核以复核记录为准、原始时序原样保留）。
+    """
+    from datetime import date, timedelta
+
+    start = date(2026, 8, 1)
+    end = date(2026, 9, 29)
+    days = (end - start).days + 1
+
+    # 观测点配置：(观测编号, 基准值, 允许偏离, 波动振幅)
+    points = [
+        ("SW-BORE0001-JS", 12.5, 0.30, 0.08),
+        ("SW-BORE0001-YC", 8.0, 1.00, 0.30),
+        ("SW-BORE0002-JS", 6.4, 0.50, 0.10),
+        ("SW-BORE0002-JL", 15.0, 20.0, 6.0),
+        ("SW-BORE0003-JS", 9.8, 0.30, 0.08),
+        ("SW-BORE0003-WY", 0.42, 0.05, 0.01),
+    ]
+
+    # (观测编号, 起, 止, 值生成函数) 注入的异常段
+    anomalies: list[tuple[str, date, date, Any]] = [
+        # A 静止水位：9/22~9/25 连续 4 天偏低，待补测
+        ("SW-BORE0001-JS", date(2026, 9, 22), date(2026, 9, 25),
+         lambda d, i: 12.05 - 0.03 * i),
+        # B 抽水井涌水量：9/10~9/12 偏低，已补测并复核闭合
+        ("SW-BORE0001-YC", date(2026, 9, 10), date(2026, 9, 12),
+         lambda d, i: 6.6 - 0.1 * i),
+        # C 静止水位：8/20~8/23 偏高，待补测
+        ("SW-BORE0002-JS", date(2026, 8, 20), date(2026, 8, 23),
+         lambda d, i: 7.05 + 0.03 * i),
+        # D 降雨量：9/15~9/16 异常偏大，已复核闭合
+        ("SW-BORE0002-JL", date(2026, 9, 15), date(2026, 9, 16),
+         lambda d, i: 42.0 + i),
+        # E 静止水位：9/26~9/28 偏低，待补测
+        ("SW-BORE0003-JS", date(2026, 9, 26), date(2026, 9, 28),
+         lambda d, i: 9.40 - 0.02 * i),
+        # F 承压水压力：9/5~9/6 偏高，已复核闭合
+        ("SW-BORE0003-WY", date(2026, 9, 5), date(2026, 9, 6),
+         lambda d, i: 0.49 + 0.01 * i),
+    ]
+
+    overrides: dict[tuple[str, str], Any] = {}
+    for point_code, seg_start, seg_end, fn in anomalies:
+        cursor = seg_start
+        idx = 0
+        while cursor <= seg_end:
+            overrides[(point_code, cursor.isoformat())] = fn(cursor, idx)
+            cursor += timedelta(days=1)
+            idx += 1
+
+    series: list[dict[str, Any]] = []
+    seq = 0
+    for point_code, baseline, _tol, amp in points:
+        for i in range(days):
+            day = start + timedelta(days=i)
+            observed_at = day.isoformat()
+            # 确定性波动，默认落在带内
+            normal = round(baseline + amp * (((i * 7) % 5) - 2) / 2, 3)
+            value = overrides.get((point_code, observed_at), normal)
+            seq += 1
+            series.append({
+                "id": seq,
+                "观测编号": f"{point_code}-R{seq:04d}",
+                "观测点编号": point_code,
+                "观测时间": observed_at,
+                "观测值": round(float(value), 3),
+                "回传时间": (day + timedelta(hours=20)).isoformat(timespec="minutes"),
+            })
+
+    reviews: list[dict[str, Any]] = []
+    deviations: list[dict[str, Any]] = []
+    retasks: list[dict[str, Any]] = []
+    next_review = 1
+    next_deviation = 1
+    next_retask = 1
+
+    # (观测编号, 起, 止, 状态, 复核基准, 复核振幅)
+    segment_specs = [
+        ("SW-BORE0001-JS", date(2026, 9, 22), date(2026, 9, 25), "open", None, None),
+        ("SW-BORE0001-YC", date(2026, 9, 10), date(2026, 9, 12), "closed", 8.0, 0.2),
+        ("SW-BORE0002-JS", date(2026, 8, 20), date(2026, 8, 23), "open", None, None),
+        ("SW-BORE0002-JL", date(2026, 9, 15), date(2026, 9, 16), "closed", 15.0, 4.0),
+        ("SW-BORE0003-JS", date(2026, 9, 26), date(2026, 9, 28), "open", None, None),
+        ("SW-BORE0003-WY", date(2026, 9, 5), date(2026, 9, 6), "closed", 0.42, 0.01),
+    ]
+
+    by_code: dict[str, dict[str, dict[str, Any]]] = {}
+    for row in series:
+        by_code.setdefault(row["观测点编号"], {})[row["观测时间"]] = row
+
+    for point_code, seg_start, seg_end, state, review_base, review_amp in segment_specs:
+        cursor = seg_start
+        within = 0
+        while cursor <= seg_end:
+            day = cursor.isoformat()
+            point = by_code[point_code][day]
+            if state == "closed":
+                # 人工复核以复核记录为准：给带内复核值，原始时序保持异常值不追溯改写
+                corrected = round(review_base + review_amp * (within % 2), 3)
+                reviews.append({
+                    "id": next_review,
+                    "复核编号": f"REV-{next_review:04d}",
+                    "观测编号": point["观测编号"],
+                    "观测点编号": point_code,
+                    "复核值": corrected,
+                    "复核人": "王水文",
+                    "复核时间": (seg_end + timedelta(days=2)).isoformat(),
+                    "复核说明": "现场补测确认，原回传值受仪器漂移影响",
+                })
+                next_review += 1
+            cursor += timedelta(days=1)
+            within += 1
+
+        retask = {
+            "id": next_retask,
+            "补测编号": f"RT-{next_retask:04d}",
+            "观测点编号": point_code,
+            "偏离起": seg_start.isoformat(),
+            "偏离止": seg_end.isoformat(),
+            "状态": "待补测" if state == "open" else "已完成",
+            "派发时间": (seg_end + timedelta(days=1)).isoformat(),
+            "指派人": "调度员",
+            "完成时间": None if state == "open" else (seg_end + timedelta(days=2)).isoformat(),
+        }
+        retasks.append(retask)
+        next_retask += 1
+
+        label = "待补测" if state == "open" else "已闭合"
+        deviations.append({
+            "id": next_deviation,
+            "观测点编号": point_code,
+            "开始时间": seg_start.isoformat(),
+            "结束时间": seg_end.isoformat(),
+            "偏离天数": within,
+            "最大偏离": None,  # 由服务层按时序计算，避免种子与规则漂移
+            "状态": label,
+            "补测编号": retask["补测编号"],
+        })
+        next_deviation += 1
+
+    return {
+        "hydro_series": series,
+        "hydro_reviews": reviews,
+        "hydro_deviations": deviations,
+        "hydro_retasks": retasks,
+    }
+
+
+SEED_ROWS.update(_build_hydro_aux())
